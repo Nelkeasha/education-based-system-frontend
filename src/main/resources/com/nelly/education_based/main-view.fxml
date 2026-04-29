@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.nelly.education_based.MainController"
+            prefWidth="960" prefHeight="700">
+
+    <!-- ── Header ─────────────────────────────────────────────────── -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="14"
+              style="-fx-background-color: #1565C0; -fx-padding: 12 20;">
+            <Label text="University Management System"
+                   style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="welcomeLabel"
+                   style="-fx-text-fill: #BBDEFB; -fx-font-size: 12;"/>
+            <Button text="Logout" onAction="#handleLogout"
+                    style="-fx-background-color: #C62828;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 4;
+                           -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <!-- ── Tabs ───────────────────────────────────────────────────── -->
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+
+            <!-- ══ STUDENTS ══════════════════════════════════════════ -->
+            <Tab text="  Students  ">
+                <BorderPane>
+                    <top>
+                        <VBox style="-fx-background-color: #F5F5F5;
+                                     -fx-padding: 12;
+                                     -fx-spacing: 8;
+                                     -fx-border-color: #E0E0E0;
+                                     -fx-border-width: 0 0 1 0;">
+                            <Label text="Register New Student"
+                                   style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                            <HBox spacing="8" alignment="CENTER_LEFT">
+                                <TextField fx:id="studentIdField"   promptText="Student ID"   prefWidth="105"/>
+                                <TextField fx:id="firstNameField"   promptText="First Name"   prefWidth="120"/>
+                                <TextField fx:id="lastNameField"    promptText="Last Name"    prefWidth="120"/>
+                                <TextField fx:id="emailField"       promptText="Email"        prefWidth="190"/>
+                                <TextField fx:id="majorField"       promptText="Major"        prefWidth="130"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Button text="Add Student"     onAction="#handleAddStudent"
+                                        style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-background-radius: 4;"/>
+                                <Button text="Delete Selected" onAction="#handleDeleteStudent"
+                                        style="-fx-background-color: #B71C1C; -fx-text-fill: white; -fx-background-radius: 4;"/>
+                                <Button text="Clear"           onAction="#handleClearStudentForm"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+                    <center>
+                        <TableView fx:id="studentTable" style="-fx-padding: 6;">
+                            <columns>
+                                <TableColumn fx:id="studentIdCol"        text="Student ID"  prefWidth="100"/>
+                                <TableColumn fx:id="studentFirstNameCol" text="First Name"  prefWidth="120"/>
+                                <TableColumn fx:id="studentLastNameCol"  text="Last Name"   prefWidth="120"/>
+                                <TableColumn fx:id="studentEmailCol"     text="Email"       prefWidth="210"/>
+                                <TableColumn fx:id="studentMajorCol"     text="Major"       prefWidth="150"/>
+                                <TableColumn fx:id="studentGpaCol"       text="GPA"         prefWidth="80"/>
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+            <!-- ══ COURSES ═══════════════════════════════════════════ -->
+            <Tab text="  Courses  ">
+                <BorderPane>
+                    <top>
+                        <VBox style="-fx-background-color: #F5F5F5;
+                                     -fx-padding: 12;
+                                     -fx-spacing: 8;
+                                     -fx-border-color: #E0E0E0;
+                                     -fx-border-width: 0 0 1 0;">
+                            <Label text="Register New Course"
+                                   style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                            <HBox spacing="8" alignment="CENTER_LEFT">
+                                <TextField fx:id="courseCodeField"    promptText="Course Code"  prefWidth="110"/>
+                                <TextField fx:id="courseNameField"    promptText="Course Name"  prefWidth="220"/>
+                                <TextField fx:id="creditHoursField"   promptText="Credits"      prefWidth="75"/>
+                                <TextField fx:id="maxCapacityField"   promptText="Max Capacity" prefWidth="110"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Button text="Add Course"      onAction="#handleAddCourse"
+                                        style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-background-radius: 4;"/>
+                                <Button text="Delete Selected" onAction="#handleDeleteCourse"
+                                        style="-fx-background-color: #B71C1C; -fx-text-fill: white; -fx-background-radius: 4;"/>
+                                <Button text="Clear"           onAction="#handleClearCourseForm"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+                    <center>
+                        <TableView fx:id="courseTable" style="-fx-padding: 6;">
+                            <columns>
+                                <TableColumn fx:id="courseCodeCol"     text="Code"        prefWidth="100"/>
+                                <TableColumn fx:id="courseNameCol"     text="Course Name" prefWidth="250"/>
+                                <TableColumn fx:id="creditHoursCol"    text="Credits"     prefWidth="80"/>
+                                <TableColumn fx:id="maxCapacityCol"    text="Capacity"    prefWidth="90"/>
+                                <TableColumn fx:id="availableSeatsCol" text="Available"   prefWidth="90"/>
+                                <TableColumn fx:id="enrolledCountCol"  text="Enrolled"    prefWidth="90"/>
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+            <!-- ══ ENROLLMENTS ════════════════════════════════════════ -->
+            <Tab text="  Enrollments  ">
+                <BorderPane>
+                    <top>
+                        <VBox style="-fx-background-color: #F5F5F5;
+                                     -fx-padding: 12;
+                                     -fx-spacing: 8;
+                                     -fx-border-color: #E0E0E0;
+                                     -fx-border-width: 0 0 1 0;">
+                            <Label text="Enroll Student in Course"
+                                   style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                            <HBox spacing="8" alignment="CENTER_LEFT">
+                                <TextField fx:id="enrollStudentIdField"   promptText="Student ID"  prefWidth="160"/>
+                                <TextField fx:id="enrollCourseCodeField"  promptText="Course Code" prefWidth="160"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Button text="Enroll Student" onAction="#handleEnroll"
+                                        style="-fx-background-color: #1565C0; -fx-text-fill: white; -fx-background-radius: 4;"/>
+                                <Button text="Drop Selected"  onAction="#handleDropEnrollment"
+                                        style="-fx-background-color: #B71C1C; -fx-text-fill: white; -fx-background-radius: 4;"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+                    <center>
+                        <TableView fx:id="enrollmentTable" style="-fx-padding: 6;">
+                            <columns>
+                                <TableColumn fx:id="enrollStudentIdCol"   text="Student ID"   prefWidth="100"/>
+                                <TableColumn fx:id="enrollStudentNameCol" text="Student Name" prefWidth="160"/>
+                                <TableColumn fx:id="enrollCourseCodeCol"  text="Course Code"  prefWidth="110"/>
+                                <TableColumn fx:id="enrollCourseNameCol"  text="Course Name"  prefWidth="220"/>
+                                <TableColumn fx:id="enrollDateCol"        text="Enrolled On"  prefWidth="120"/>
+                                <TableColumn fx:id="enrollStatusCol"      text="Status"       prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+            <!-- ══ GRADES ═════════════════════════════════════════════ -->
+            <Tab text="  Grades  ">
+                <BorderPane>
+                    <top>
+                        <VBox style="-fx-background-color: #F5F5F5;
+                                     -fx-padding: 12;
+                                     -fx-spacing: 8;
+                                     -fx-border-color: #E0E0E0;
+                                     -fx-border-width: 0 0 1 0;">
+                            <Label text="Assign Grade  (scale: 0.0 – 5.0)"
+                                   style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                            <HBox spacing="8" alignment="CENTER_LEFT">
+                                <TextField fx:id="gradeStudentIdField"  promptText="Student ID"       prefWidth="150"/>
+                                <TextField fx:id="gradeCourseCodeField" promptText="Course Code"      prefWidth="150"/>
+                                <TextField fx:id="gradeValueField"      promptText="Grade (e.g. 4.5)" prefWidth="140"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Button text="Assign Grade"        onAction="#handleAssignGrade"
+                                        style="-fx-background-color: #E65100; -fx-text-fill: white; -fx-background-radius: 4;"/>
+                                <Button text="View Student Grades" onAction="#handleViewStudentGrades"/>
+                                <Button text="Show All"            onAction="#handleShowAllGrades"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+                    <center>
+                        <TableView fx:id="gradeTable" style="-fx-padding: 6;">
+                            <columns>
+                                <TableColumn fx:id="gradeStudentIdCol"   text="Student ID"   prefWidth="100"/>
+                                <TableColumn fx:id="gradeStudentNameCol" text="Student Name" prefWidth="160"/>
+                                <TableColumn fx:id="gradeCourseCodeCol"  text="Course Code"  prefWidth="110"/>
+                                <TableColumn fx:id="gradeCourseNameCol"  text="Course Name"  prefWidth="220"/>
+                                <TableColumn fx:id="gradeValueCol"       text="Grade"        prefWidth="80"/>
+                                <TableColumn fx:id="gradeLetterCol"      text="Letter"       prefWidth="80"/>
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+        </TabPane>
+    </center>
+
+    <!-- ── Status bar ─────────────────────────────────────────────── -->
+    <bottom>
+        <HBox style="-fx-background-color: #EEEEEE;
+                     -fx-padding: 5 14;
+                     -fx-border-color: #BDBDBD;
+                     -fx-border-width: 1 0 0 0;">
+            <Label fx:id="statusLabel" text="Ready" style="-fx-font-size: 12;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
